@@ -1,0 +1,5 @@
+// to create pod
+kubectl apply -f posts.yaml
+
+//to get all pods
+kubectl get pods
