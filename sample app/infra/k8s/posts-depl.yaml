@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: posts
-          image: harsha/posts:0.0.1
+          image: harsha/posts:latest
 
 
