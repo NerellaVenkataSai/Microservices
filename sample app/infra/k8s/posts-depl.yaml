@@ -1,0 +1,23 @@
+# There are certain buckets where we can get certain objects to get Deploymeny object we use apps/v1
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  # replicas means number of Pods to run this image
+  replicas: 1
+  selector:
+    # Selector It will find all Pods with name <key>:<value>app: posts names can be anything (line 13 got macthed with 17 and get spec to generate Pod)
+    matchLabels:
+      app: posts
+  template:
+    metadata:
+      labels:
+        app: posts
+    spec:
+      containers:
+        - name: posts
+          image: harsha/posts:0.0.1
+
+

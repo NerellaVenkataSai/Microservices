@@ -1,3 +1,4 @@
+# There are certain buckets where we can get certain objects to get Pod object we use apps/v1
 apiVersion: v1
 kind: Pod
 metadata:
