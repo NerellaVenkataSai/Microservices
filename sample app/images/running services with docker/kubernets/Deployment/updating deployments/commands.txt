@@ -1,0 +1,7 @@
+kubectl get deployments
+
+kubectl apply -f depl-file-name.yaml
+
+kubectl describe depl-name
+
+kubectl rollout restart deployment posts-depl<depl-name>
