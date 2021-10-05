@@ -3,35 +3,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posts-depl
+  name: event-bus-depl
 spec:
   # replicas means number of Pods to run this image
   replicas: 1
   selector:
     # Selector It will find all Pods with name <key>:<value>app: posts names can be anything (line 13 got macthed with 17 and get spec to generate Pod)
     matchLabels:
-      app: posts
+      app: event-bus
   template:
     metadata:
       labels:
-        app: posts
+        app: event-bus
     spec:
       containers:
-        - name: posts
-          image: harsha/posts:latest
+        - name: event-bus
+          image: harsha/event-bus
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-serv
+  name: event-bus-serv
 spec:
   type: ClusterIP
   selector:
-    app: posts
+    app: event-bus
   ports:
-    - name: posts
+    - name: event-bus
       protocol: TCP
-      port: 4000
-      targetPort: 4000
-
+      port: 4005
+      targetPort: 4005
 
