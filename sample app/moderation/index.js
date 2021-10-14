@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/events', async (req, res) => {
-  console.log("Event Received:", req.body.type);
+  console.log("Event Received moderation:", req.body.type);
   const { type, data } = req.body;
 
   if (type === 'CommentCreated') {
