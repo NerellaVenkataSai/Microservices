@@ -1,0 +1,1 @@
+etc/hosts file path in windows --- c:\windows\system32\drivers\etc\hosts
