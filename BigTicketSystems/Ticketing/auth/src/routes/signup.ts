@@ -16,15 +16,15 @@ router.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(400).send(errors.array());
+      // This is javascript land (not ts)
+      // will resolve error handling middleware in future commits
+      const error = new Error("Invalid email or password");
+      error.reasons = errors.array();
+      throw error;
     }
-    const { email, password } = req.body;
-
     console.log("Creating a user...");
+    throw new Error("Error connecting to database");
 
-    res.send({});
-
-    // new User({ email, password })
   }
 );
 
