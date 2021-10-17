@@ -1,0 +1,37 @@
+# There are certain buckets where we can get certain objects to get Deploymeny object we use apps/v1
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-depl
+spec:
+  # replicas means number of Pods to run this image
+  replicas: 1
+  selector:
+    # Selector It will find all Pods with name <key>:<value>app: posts names can be anything (line 13 got macthed with 17 and get spec to generate Pod)
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: harshanerella/auth
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-serv
+spec:
+  # ClusterIP is default service for kubernets eventhough you didn't mention any type
+  type: ClusterIP
+  selector:
+    app: auth
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+
